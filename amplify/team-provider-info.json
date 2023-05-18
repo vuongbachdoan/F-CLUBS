@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-fclubs-staging-81559-authRole",
+      "UnauthRoleArn": "arn:aws:iam::955228589631:role/amplify-fclubs-staging-81559-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::955228589631:role/amplify-fclubs-staging-81559-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-fclubs-staging-81559-deployment",
+      "UnauthRoleName": "amplify-fclubs-staging-81559-unauthRole",
+      "StackName": "amplify-fclubs-staging-81559",
+      "StackId": "arn:aws:cloudformation:us-east-1:955228589631:stack/amplify-fclubs-staging-81559/3930a260-f554-11ed-987a-0a11ebd50cc1",
+      "AmplifyAppId": "d3p5tjzq7mwb5m"
+    },
+    "categories": {
+      "auth": {
+        "FClubs": {}
+      }
+    }
+  }
+}
