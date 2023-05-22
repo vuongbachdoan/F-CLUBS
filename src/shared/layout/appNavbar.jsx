@@ -19,16 +19,16 @@ export const AppNavBar = () => {
             </Navbar.Brand>
             <Navbar.Content hideIn="xs">
                 {/* Manager links */}
-                <Navbar.Link href="/manager/home" isActive={"/manager/home" === currentRoute.pathname}>Home</Navbar.Link>
-                <Navbar.Link href="/manager/clubs" isActive={"/manager/clubs" === currentRoute.pathname}>Clubs</Navbar.Link>
-                <Navbar.Link href="/manager/events" isActive={"/manager/events" === currentRoute.pathname}>Events</Navbar.Link>
+                <Navbar.Link href="/app/manager/home" isActive={"/app/manager/home" === currentRoute.pathname}>Home</Navbar.Link>
+                <Navbar.Link href="/app/manager/clubs" isActive={"/app/manager/clubs" === currentRoute.pathname}>Clubs</Navbar.Link>
+                <Navbar.Link href="/app/manager/events" isActive={"/app/manager/events" === currentRoute.pathname}>Events</Navbar.Link>
             
                 {/* Club links */}
-                <Navbar.Link href="/club/home" isActive={"/club/home" === currentRoute.pathname}>Home</Navbar.Link>
-                <Navbar.Link href="/club/events" isActive={"/club/events" === currentRoute.pathname}>Events</Navbar.Link>
-                <Navbar.Link href="/club/calendar" isActive={"/club/calendar" === currentRoute.pathname}>Calendar</Navbar.Link>
-                <Navbar.Link href="/club/members" isActive={"/club/members" === currentRoute.pathname}>Members</Navbar.Link>
-                <Navbar.Link href="/club/about" isActive={"/club/about" === currentRoute.pathname}>About</Navbar.Link>
+                <Navbar.Link href="/app/club/home" isActive={"/app/club/home" === currentRoute.pathname}>Home</Navbar.Link>
+                <Navbar.Link href="/app/club/events" isActive={"/app/club/events" === currentRoute.pathname}>Events</Navbar.Link>
+                <Navbar.Link href="/app/club/calendar" isActive={"/app/club/calendar" === currentRoute.pathname}>Calendar</Navbar.Link>
+                <Navbar.Link href="/app/club/members" isActive={"/app/club/members" === currentRoute.pathname}>Members</Navbar.Link>
+                <Navbar.Link href="/app/club/about" isActive={"/app/club/about" === currentRoute.pathname}>About</Navbar.Link>
             </Navbar.Content>
             <Navbar.Content>
                 {/* <Navbar.Link color="inherit" href="#">

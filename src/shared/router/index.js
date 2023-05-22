@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import { Dashboard } from "../../pages/dashboard";
 import { Auth } from "../../pages/auth";
 import { Login } from "../../pages/auth/components/login";
@@ -20,6 +20,11 @@ import { RequestClub } from "../../pages/dashboard/general/requestClub";
 export const appRouter = createBrowserRouter([
     {
         path: "",
+        element: <Navigate to="/auth/login" replace />,
+        
+    },
+    {
+        path: "app",
         element: <Dashboard/>,
         children: [
             {
@@ -95,5 +100,9 @@ export const appRouter = createBrowserRouter([
                 element: <Verify/>
             }
         ]
+    },
+    {
+        path: "",
+        element: <Navigate to="/auth/login" replace />
     }
 ])

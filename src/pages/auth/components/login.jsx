@@ -16,7 +16,7 @@ export const Login = () => {
             .then((res) => {
                 Promise.all([
                     localStorage.setItem("user", JSON.stringify(res.user)),
-                    navigate("/manager/home"),
+                    navigate("app/manager/home"),
                 ])
             })
     }
