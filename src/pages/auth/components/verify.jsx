@@ -9,7 +9,9 @@ export const Verify = () => {
         confirmSignUp(JSON.parse(localStorage.getItem("user")).username, code)
             .then((res) => {
                 if (res === "SUCCESS") {
-                    navigate("/manager/home")
+                    navigate("/manager/home", {
+                        replace: true
+                    })
                 } else {
                     setIsDisable(false);
                     resetCode();
@@ -73,7 +75,7 @@ export const Verify = () => {
                 </Button>
                 <Text>
                     Already have an account,
-                    <Link href="/auth/login">
+                    <Link onClick={(e) => changeRoute(e, "/auth/login")} href="/auth/login">
                         &nbsp;Sign in.
                     </Link>
                 </Text>
