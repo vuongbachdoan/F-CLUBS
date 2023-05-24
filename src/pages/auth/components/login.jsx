@@ -20,6 +20,8 @@ export const Login = () => {
                         replace: true
                     }),
                 ])
+            }).catch(() => {
+                setIsLogin(false);
             })
     }
     const changeRoute = (event, href) => {
