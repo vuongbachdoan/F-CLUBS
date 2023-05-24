@@ -4,11 +4,14 @@ import { signOut } from "../../core/api/auth/authService";
 
 export const UserCard = () => {
   const navigate = useNavigate();
+
   const handleLogout = () => {
     Promise.all([
       signOut(),
       localStorage.removeItem("user"),
-      navigate("/auth/login")
+      navigate("/auth/login", {
+        replace: true
+      })
     ])
   }
 
@@ -36,13 +39,13 @@ export const UserCard = () => {
           Help & Feedback
         </Dropdown.Item>
         <Dropdown.Item key="logout" color="error" withDivider onPress={handleLogout}>
-          <Link 
-          href="/auth/login"
-          css={{
-            display: "block",
-            width: "100%"
-          }}
-          className="link-auto"
+          <Link
+            href="/auth/login"
+            css={{
+              display: "block",
+              width: "100%"
+            }}
+            className="link-auto"
           >Log Out</Link>
         </Dropdown.Item>
       </Dropdown.Menu>

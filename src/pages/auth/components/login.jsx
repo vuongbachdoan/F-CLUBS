@@ -22,6 +22,13 @@ export const Login = () => {
                 ])
             })
     }
+    const changeRoute = (event, href) => {
+        event.preventDefault();
+        navigate(href, {
+            replace: true
+        })
+    }
+
     return <>
         <Modal
             blur
@@ -79,7 +86,7 @@ export const Login = () => {
                 </Button>
                 <Text>
                     Don't have an account,
-                    <Link href="/auth/sign-up">
+                    <Link onClick={(e) => changeRoute(e, "/auth/sign-up")} href="/auth/sign-up">
                         &nbsp;Sign up.
                     </Link>
                 </Text>

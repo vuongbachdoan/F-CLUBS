@@ -36,6 +36,13 @@ export const Register = () => {
 
     const { value: password, reset: resetPassword, bindings: bindingsPassword } = useInput("");
 
+    const changeRoute = (event, href) => {
+        event.preventDefault();
+        navigate(href, {
+            replace: true
+        })
+    }
+
     return <>
         <Modal
             blur
@@ -102,7 +109,7 @@ export const Register = () => {
                 </Button>
                 <Text>
                     Already have an account,
-                    <Link href="/auth/login">
+                    <Link onClick={(e) => changeRoute(e, "/auth/login")} href="/auth/login">
                         &nbsp;Sign in.
                     </Link>
                 </Text>
