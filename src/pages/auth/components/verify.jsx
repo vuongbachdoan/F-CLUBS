@@ -1,6 +1,6 @@
 import { Input, Row, Text, Checkbox, Modal, Button, Link, useInput } from "@nextui-org/react"
 import React from "react";
-import { confirmSignUp, resendConfirmationCode, signUp } from "../../../core/api/auth/authService";
+import { confirmSignUp, resendConfirmationCode } from "../../../core/api/auth/authService";
 import { useNavigate } from "react-router-dom";
 
 export const Verify = () => {
@@ -35,6 +35,13 @@ export const Verify = () => {
         .then((res) => {
             resetCode();
             console.log("Please re-enter code")
+        })
+    }
+
+    const changeRoute = (event, href) => {
+        event.preventDefault();
+        navigate(href, {
+            replace: true
         })
     }
 
