@@ -1,0 +1,12 @@
+{
+  "resourceName": "s3fclubsstorage",
+  "bucketName": "f-clubs-storage",
+  "policyUUID": "18380240",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "READ"
+  ]
+}

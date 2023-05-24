@@ -2,7 +2,7 @@ import { Input, Row, Text, Checkbox, Modal, Button, Link, useInput, Loading, Spa
 import { Password } from "../../../assets/icons/iconMail"
 import { Mail } from "../../../assets/icons/iconPassword"
 import { login } from "../../../core/api/auth/authService"
-import { useNavigate } from "react-router-dom"
+import { redirect, useNavigate } from "react-router-dom"
 import React from "react"
 
 export const Login = () => {
@@ -16,7 +16,9 @@ export const Login = () => {
             .then((res) => {
                 Promise.all([
                     localStorage.setItem("user", JSON.stringify(res.user)),
-                    navigate("app/manager/home"),
+                    navigate("/app/manager/home", {
+                        replace: true
+                    }),
                 ])
             })
     }
@@ -53,6 +55,7 @@ export const Login = () => {
                     fullWidth
                     color="primary"
                     size="lg"
+                    type="password"
                     placeholder="Password"
                     contentLeft={<Password fill="currentColor" />}
                 />
@@ -65,8 +68,6 @@ export const Login = () => {
             </Modal.Body>
             <Modal.Footer css={{ display: "flex", justifyContent: "center" }}>
                 <Button onPress={handleLogin}>
-
-
                     {isLogin ?
                         <>
                             Loading

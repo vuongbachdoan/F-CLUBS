@@ -101,8 +101,4 @@ export const appRouter = createBrowserRouter([
             }
         ]
     },
-    {
-        path: "",
-        element: <Navigate to="/auth/login" replace />
-    }
 ])

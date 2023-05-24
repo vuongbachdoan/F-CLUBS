@@ -5,43 +5,40 @@ import { Uploader } from "uploader";
 import { UploadDropzone } from "react-uploader";
 import { createClub } from "../../../../graphql/mutations";
 import { API, graphqlOperation } from "aws-amplify";
-import React from "react";
+import React, { useCallback, useState } from "react";
+import ReactCrop from 'react-image-crop';
+import 'react-image-crop/dist/ReactCrop.css';
 
 export const Clubs = () => {
-    const {value: clubName, reset: resetClubName, bindings: bindingsClubName} = useInput();
-    const {value: details, reset: resetDetails, bindings: bindingsDetails} = useInput();
+    const { value: clubName, reset: resetClubName, bindings: bindingsClubName } = useInput();
+    const { value: details, reset: resetDetails, bindings: bindingsDetails } = useInput();
     const { setVisible, bindings } = useModal();
-    const uploader = Uploader({
-        apiKey: "free"
-    });
-    const options = {
-        editor: {
-            images: {
-                preview: true,          // True by default if cropping is enabled. Supports videos & PDFs too.
-                crop: true,             // True by default. False disables the image editor / cropper.
-                cropRatio: 4 / 3,
-                cropShape: "rect"       // "rect" | "circ"
-            }
-        },
-        maxFileCount: 1,
-        maxFileSizeBytes: 5 * 1024 * 1024,
-        mimeTypes: ["image/jpeg", "image/jpg", "image/png"],
-        multi: false,
-    }
+    const [image, setImage] = useState(null);
 
-    React.useMemo(() => {
-        console.log(clubName)
-    }, [clubName])
+    const onSelectFile = (e) => {
+        if (e.target.files && e.target.files.length > 0) {
+            const reader = new FileReader();
+            reader.addEventListener('load', () => setImage(reader.result));
+            reader.readAsDataURL(e.target.files[0]);
+        }
+    };
 
-    const addClub = () => {
-        API.graphql(
-            graphqlOperation(
-                createClub,
-                {
-
+    const addClub = async () => {
+        try {
+            await Storage.put(`club_${clubName}`, image, {
+                completeCallback: (event) => {
+                    console.log(`Successfully uploaded ${event.key}`);
+                },
+                progressCallback: (progress) => {
+                    console.log(`Uploaded: ${progress.loaded}/${progress.total}`);
+                },
+                errorCallback: (err) => {
+                    console.error('Unexpected error while uploading', err);
                 }
-            )
-        )
+            });
+        } catch (error) {
+            console.log("Error uploading file: ", error);
+        }
     }
 
     return (
@@ -67,20 +64,21 @@ export const Clubs = () => {
                         </Text>
                     </Modal.Header>
                     <Modal.Body>
-                        <Container fluid>
-                            <UploadDropzone
-                                uploader={uploader}
-                                options={options}
-                                width="200px"
-                                height="200px"
-                                onUpdate={files => {      // Optional.
-                                    if (files.length === 0) {
-                                        console.log('No files selected.')
-                                    } else {
-                                        console.log('Files uploaded:');
-                                        console.log(files.map(f => f.fileUrl));
-                                    }
-                                }} />
+                        <Container fluid justify="center">
+                            {
+                                !image &&
+                                <label htmlFor="file-input">
+                                    <img src="https://host-image.s3.amazonaws.com/camera_placeholder.jpg" alt="logo club" />
+                                </label>
+                            }
+                            <input style={{ display: "none" }} id="file-input" type="file" accept="image/*" onChange={onSelectFile} />
+                            {
+                                image &&
+                                <>
+                                    <img src={image} alt="Preview" />
+                                    <Button onPress={() => setImage(null)}>Choose another image</Button>
+                                </>
+                            }
                         </Container>
                         <Input {...bindingsClubName} label="Name" placeholder="Name should be fully meanning" />
                         <Textarea {...bindingsDetails} label="Details" placeholder="Give some information of your club here" />

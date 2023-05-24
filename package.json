@@ -15,6 +15,7 @@
     "react-big-calendar": "^1.6.9",
     "react-dom": "^18.2.0",
     "react-iconly": "^2.2.10",
+    "react-image-crop": "^10.0.11",
     "react-router-dom": "^6.11.1",
     "react-scripts": "5.0.1",
     "react-uploader": "^3.33.0",
