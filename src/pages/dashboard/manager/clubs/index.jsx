@@ -4,10 +4,8 @@ import { ClubCard } from "../components/clubCard";
 import { Uploader } from "uploader";
 import { UploadDropzone } from "react-uploader";
 import { createClub } from "../../../../graphql/mutations";
-import { API, graphqlOperation } from "aws-amplify";
+import { API, Storage, graphqlOperation } from "aws-amplify";
 import React, { useCallback, useState } from "react";
-import ReactCrop from 'react-image-crop';
-import 'react-image-crop/dist/ReactCrop.css';
 
 export const Clubs = () => {
     const { value: clubName, reset: resetClubName, bindings: bindingsClubName } = useInput();
@@ -87,7 +85,7 @@ export const Clubs = () => {
                         <Button auto flat color="error" onPress={() => setVisible(false)}>
                             Close
                         </Button>
-                        <Button auto onPress={() => addClub()}>
+                        <Button auto onPress={addClub}>
                             Agree
                         </Button>
                     </Modal.Footer>

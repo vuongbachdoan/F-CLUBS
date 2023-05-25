@@ -8,13 +8,15 @@ import { signUp } from "../../../core/api/auth/authService";
 export const Register = () => {
     const navigate = useNavigate();
     const handleSignUp = () => {
-        signUp(email, password)
-            .then((res) => {
-                Promise.all([
-                    localStorage.setItem("user", JSON.stringify(res.user)),
-                    navigate("/auth/verify")
-                ])
-            })
+        if (password === passwordConfirm) {
+            signUp(email, password)
+                .then((res) => {
+                    Promise.all([
+                        localStorage.setItem("user", JSON.stringify(res.user)),
+                        navigate("/auth/verify")
+                    ])
+                })
+        }
     }
 
     const { value: email, reset: resetEmail, bindings: bindingsEmail } = useInput("");
@@ -35,6 +37,46 @@ export const Register = () => {
     }, [email]);
 
     const { value: password, reset: resetPassword, bindings: bindingsPassword } = useInput("");
+    const { value: passwordConfirm, reset: resetPasswordConfirm, bindings: bindingsPasswordConfirm } = useInput("");
+    const helperPassword = React.useMemo(() => {
+        if (!password) {
+            return {
+                text: "",
+                color: "",
+            };
+        } 
+        if(!password.match("(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}")) {
+            return {
+                text: "Password must be at least 8 chacters, include A-Za-z0-9 and special characters",
+                color: "error",
+            };
+        } else {
+            return {
+                text: "Valid password",
+                color: "success",
+            }
+        }
+    }, [password])
+    const helperPasswordConfirm = React.useMemo(() => {
+        if (!password || !passwordConfirm) {
+            return {
+                text: "",
+                color: "",
+            };
+        }
+        if(password !== passwordConfirm) {
+            return {
+                text: "Confirm password not match",
+                color: "error"
+            }
+        } else {
+            return {
+                text: "Valid password",
+                color: "success",
+            }
+        }
+       
+    }, [passwordConfirm]);
 
     const changeRoute = (event, href) => {
         event.preventDefault();
@@ -80,16 +122,24 @@ export const Register = () => {
                     shadow={false}
                     onClearClick={resetPassword}
                     fullWidth
+                    status={helperPassword.color}
+                    color={helperPassword.color}
+                    helperColor={helperPassword.color}
+                    helperText={helperPassword.text}
                     type="password"
                     label="Password"
                     placeholder="Password"
                     contentLeft={<Password fill="currentColor" />}
                 />
                 <Input
-                    {...bindingsPassword}
+                    {...bindingsPasswordConfirm}
                     clearable
                     shadow={false}
-                    onClearClick={resetPassword}
+                    onClearClick={resetPasswordConfirm}
+                    status={helperPasswordConfirm.color}
+                    color={helperPasswordConfirm.color}
+                    helperColor={helperPasswordConfirm.color}
+                    helperText={helperPasswordConfirm.text}
                     fullWidth
                     type="password"
                     label="Confirm password"
