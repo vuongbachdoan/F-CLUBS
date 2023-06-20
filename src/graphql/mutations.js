@@ -1,90 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createClub = /* GraphQL */ `
-  mutation CreateClub(
-    $input: CreateClubInput!
-    $condition: ModelClubConditionInput
-  ) {
-    createClub(input: $input, condition: $condition) {
-      id
-      name
-      description
-      thumbnail
-      events {
-        nextToken
-        startedAt
-      }
-      organizer {
-        nextToken
-        startedAt
-      }
-      type
-      managerID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const updateClub = /* GraphQL */ `
-  mutation UpdateClub(
-    $input: UpdateClubInput!
-    $condition: ModelClubConditionInput
-  ) {
-    updateClub(input: $input, condition: $condition) {
-      id
-      name
-      description
-      thumbnail
-      events {
-        nextToken
-        startedAt
-      }
-      organizer {
-        nextToken
-        startedAt
-      }
-      type
-      managerID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const deleteClub = /* GraphQL */ `
-  mutation DeleteClub(
-    $input: DeleteClubInput!
-    $condition: ModelClubConditionInput
-  ) {
-    deleteClub(input: $input, condition: $condition) {
-      id
-      name
-      description
-      thumbnail
-      events {
-        nextToken
-        startedAt
-      }
-      organizer {
-        nextToken
-        startedAt
-      }
-      type
-      managerID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
 export const createEvent = /* GraphQL */ `
   mutation CreateEvent(
     $input: CreateEventInput!
@@ -93,22 +9,15 @@ export const createEvent = /* GraphQL */ `
     createEvent(input: $input, condition: $condition) {
       id
       name
+      startDate
+      endDate
+      place
       description
+      banner
       thumbnail
-      startAt
-      endAt
-      hosts {
-        nextToken
-        startedAt
-      }
-      belongTo {
-        nextToken
-        startedAt
-      }
-      users {
-        nextToken
-        startedAt
-      }
+      status
+      participants
+      ownerClub
       createdAt
       updatedAt
       _version
@@ -125,22 +34,15 @@ export const updateEvent = /* GraphQL */ `
     updateEvent(input: $input, condition: $condition) {
       id
       name
+      startDate
+      endDate
+      place
       description
+      banner
       thumbnail
-      startAt
-      endAt
-      hosts {
-        nextToken
-        startedAt
-      }
-      belongTo {
-        nextToken
-        startedAt
-      }
-      users {
-        nextToken
-        startedAt
-      }
+      status
+      participants
+      ownerClub
       createdAt
       updatedAt
       _version
@@ -157,22 +59,156 @@ export const deleteEvent = /* GraphQL */ `
     deleteEvent(input: $input, condition: $condition) {
       id
       name
+      startDate
+      endDate
+      place
       description
+      banner
       thumbnail
-      startAt
-      endAt
-      hosts {
+      status
+      participants
+      ownerClub
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const createAdmin = /* GraphQL */ `
+  mutation CreateAdmin(
+    $input: CreateAdminInput!
+    $condition: ModelAdminConditionInput
+  ) {
+    createAdmin(input: $input, condition: $condition) {
+      id
+      name
+      thumbnal
+      testingClubs
+      pendingEvents
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const updateAdmin = /* GraphQL */ `
+  mutation UpdateAdmin(
+    $input: UpdateAdminInput!
+    $condition: ModelAdminConditionInput
+  ) {
+    updateAdmin(input: $input, condition: $condition) {
+      id
+      name
+      thumbnal
+      testingClubs
+      pendingEvents
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const deleteAdmin = /* GraphQL */ `
+  mutation DeleteAdmin(
+    $input: DeleteAdminInput!
+    $condition: ModelAdminConditionInput
+  ) {
+    deleteAdmin(input: $input, condition: $condition) {
+      id
+      name
+      thumbnal
+      testingClubs
+      pendingEvents
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const createClub = /* GraphQL */ `
+  mutation CreateClub(
+    $input: CreateClubInput!
+    $condition: ModelClubConditionInput
+  ) {
+    createClub(input: $input, condition: $condition) {
+      id
+      name
+      introdution
+      type
+      members {
         nextToken
         startedAt
       }
-      belongTo {
+      events {
         nextToken
         startedAt
       }
-      users {
+      thumbnail
+      email
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const updateClub = /* GraphQL */ `
+  mutation UpdateClub(
+    $input: UpdateClubInput!
+    $condition: ModelClubConditionInput
+  ) {
+    updateClub(input: $input, condition: $condition) {
+      id
+      name
+      introdution
+      type
+      members {
         nextToken
         startedAt
       }
+      events {
+        nextToken
+        startedAt
+      }
+      thumbnail
+      email
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const deleteClub = /* GraphQL */ `
+  mutation DeleteClub(
+    $input: DeleteClubInput!
+    $condition: ModelClubConditionInput
+  ) {
+    deleteClub(input: $input, condition: $condition) {
+      id
+      name
+      introdution
+      type
+      members {
+        nextToken
+        startedAt
+      }
+      events {
+        nextToken
+        startedAt
+      }
+      thumbnail
+      email
       createdAt
       updatedAt
       _version
@@ -188,19 +224,16 @@ export const createUser = /* GraphQL */ `
   ) {
     createUser(input: $input, condition: $condition) {
       id
-      email
-      password
-      avatar
+      name
+      thumbnail
       clubs {
         nextToken
         startedAt
       }
-      eventID
-      events {
+      joinedEvents {
         nextToken
         startedAt
       }
-      role
       createdAt
       updatedAt
       _version
@@ -216,19 +249,16 @@ export const updateUser = /* GraphQL */ `
   ) {
     updateUser(input: $input, condition: $condition) {
       id
-      email
-      password
-      avatar
+      name
+      thumbnail
       clubs {
         nextToken
         startedAt
       }
-      eventID
-      events {
+      joinedEvents {
         nextToken
         startedAt
       }
-      role
       createdAt
       updatedAt
       _version
@@ -244,147 +274,15 @@ export const deleteUser = /* GraphQL */ `
   ) {
     deleteUser(input: $input, condition: $condition) {
       id
-      email
-      password
-      avatar
+      name
+      thumbnail
       clubs {
         nextToken
         startedAt
       }
-      eventID
-      events {
+      joinedEvents {
         nextToken
         startedAt
-      }
-      role
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const createEventClub = /* GraphQL */ `
-  mutation CreateEventClub(
-    $input: CreateEventClubInput!
-    $condition: ModelEventClubConditionInput
-  ) {
-    createEventClub(input: $input, condition: $condition) {
-      id
-      clubId
-      eventId
-      club {
-        id
-        name
-        description
-        thumbnail
-        type
-        managerID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      event {
-        id
-        name
-        description
-        thumbnail
-        startAt
-        endAt
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const updateEventClub = /* GraphQL */ `
-  mutation UpdateEventClub(
-    $input: UpdateEventClubInput!
-    $condition: ModelEventClubConditionInput
-  ) {
-    updateEventClub(input: $input, condition: $condition) {
-      id
-      clubId
-      eventId
-      club {
-        id
-        name
-        description
-        thumbnail
-        type
-        managerID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      event {
-        id
-        name
-        description
-        thumbnail
-        startAt
-        endAt
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const deleteEventClub = /* GraphQL */ `
-  mutation DeleteEventClub(
-    $input: DeleteEventClubInput!
-    $condition: ModelEventClubConditionInput
-  ) {
-    deleteEventClub(input: $input, condition: $condition) {
-      id
-      clubId
-      eventId
-      club {
-        id
-        name
-        description
-        thumbnail
-        type
-        managerID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      event {
-        id
-        name
-        description
-        thumbnail
-        startAt
-        endAt
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       createdAt
       updatedAt
@@ -406,10 +304,10 @@ export const createClubUser = /* GraphQL */ `
       club {
         id
         name
-        description
-        thumbnail
+        introdution
         type
-        managerID
+        thumbnail
+        email
         createdAt
         updatedAt
         _version
@@ -418,11 +316,8 @@ export const createClubUser = /* GraphQL */ `
       }
       user {
         id
-        email
-        password
-        avatar
-        eventID
-        role
+        name
+        thumbnail
         createdAt
         updatedAt
         _version
@@ -449,10 +344,10 @@ export const updateClubUser = /* GraphQL */ `
       club {
         id
         name
-        description
-        thumbnail
+        introdution
         type
-        managerID
+        thumbnail
+        email
         createdAt
         updatedAt
         _version
@@ -461,11 +356,8 @@ export const updateClubUser = /* GraphQL */ `
       }
       user {
         id
-        email
-        password
-        avatar
-        eventID
-        role
+        name
+        thumbnail
         createdAt
         updatedAt
         _version
@@ -492,10 +384,10 @@ export const deleteClubUser = /* GraphQL */ `
       club {
         id
         name
-        description
-        thumbnail
+        introdution
         type
-        managerID
+        thumbnail
+        email
         createdAt
         updatedAt
         _version
@@ -503,141 +395,9 @@ export const deleteClubUser = /* GraphQL */ `
         _lastChangedAt
       }
       user {
-        id
-        email
-        password
-        avatar
-        eventID
-        role
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const createUserEvent = /* GraphQL */ `
-  mutation CreateUserEvent(
-    $input: CreateUserEventInput!
-    $condition: ModelUserEventConditionInput
-  ) {
-    createUserEvent(input: $input, condition: $condition) {
-      id
-      eventId
-      userId
-      event {
         id
         name
-        description
         thumbnail
-        startAt
-        endAt
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      user {
-        id
-        email
-        password
-        avatar
-        eventID
-        role
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const updateUserEvent = /* GraphQL */ `
-  mutation UpdateUserEvent(
-    $input: UpdateUserEventInput!
-    $condition: ModelUserEventConditionInput
-  ) {
-    updateUserEvent(input: $input, condition: $condition) {
-      id
-      eventId
-      userId
-      event {
-        id
-        name
-        description
-        thumbnail
-        startAt
-        endAt
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      user {
-        id
-        email
-        password
-        avatar
-        eventID
-        role
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const deleteUserEvent = /* GraphQL */ `
-  mutation DeleteUserEvent(
-    $input: DeleteUserEventInput!
-    $condition: ModelUserEventConditionInput
-  ) {
-    deleteUserEvent(input: $input, condition: $condition) {
-      id
-      eventId
-      userId
-      event {
-        id
-        name
-        description
-        thumbnail
-        startAt
-        endAt
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      user {
-        id
-        email
-        password
-        avatar
-        eventID
-        role
         createdAt
         updatedAt
         _version

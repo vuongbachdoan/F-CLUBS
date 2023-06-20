@@ -1,29 +1,41 @@
 import { Card, Grid, Text, Link, Avatar } from "@nextui-org/react";
+import { Storage } from "aws-amplify";
+import { useEffect, useState } from "react";
 
-export const ClubCard = () => {
+export const ClubCard = ({data}) => {
+    const [clubThumbnail, setClubThumbnail] = useState(null);
+    useEffect(( ) => {
+        Storage.get(data.thumbnail)
+        .then((res) => setClubThumbnail(res))
+    }, [])
+
     return (
-        <Card css={{ p: "$6", mw: "400px" }}>
+        <Card key={data.id} css={{ p: "$6", mw: "400px", maxHeight: "258px"}}>
             <Card.Header>
                 <Avatar
                     squared
                     alt="nextui logo"
-                    src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-6/341088088_174154688842953_8522330254088174654_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=zPlKIPWzOPYAX_PwexR&_nc_ht=scontent.fsgn2-5.fna&oh=00_AfA0TkF1Nly4XO8_44-SSaxCPat8ZGaOrCpqDWPMVfh06A&oe=646A1A95"
+                    src={clubThumbnail}
                     size="xl"
                 />
                 <Grid.Container css={{ pl: "$6" }}>
                     <Grid xs={12}>
                         <Text h4 css={{ lineHeight: "$xs" }}>
-                            FU Dever
+                            {
+                            data.name
+                            }
                         </Text>
                     </Grid>
                     <Grid xs={12}>
-                        <Text css={{ color: "$accents8" }}>@IT Club</Text>
+                        <Text css={{ color: "$accents8" }}>{data.type}</Text>
                     </Grid>
                 </Grid.Container>
             </Card.Header>
             <Card.Body css={{ py: "$2" }}>
                 <Text>
-                    Dever là một câu lạc bộ học thuật, theo xu hướng nghiên cứu và phát triển sản phẩm.
+                    {
+                        data.introdution
+                    }
                 </Text>
             </Card.Body>
             <Card.Footer>
@@ -33,7 +45,9 @@ export const ClubCard = () => {
                     target="_blank"
                     href="club.dever@gmail.com"
                 >
-                    club.dever@gmail.com
+                    {
+                        data.email
+                    }
                 </Link>
             </Card.Footer>
         </Card>

@@ -9,7 +9,7 @@ export const Verify = () => {
         confirmSignUp(JSON.parse(localStorage.getItem("user")).username, code)
             .then((res) => {
                 if (res === "SUCCESS") {
-                    navigate("/manager/home", {
+                    navigate("/app/manager/home", {
                         replace: true
                     })
                 } else {

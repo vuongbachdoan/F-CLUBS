@@ -1,102 +1,20 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateClub = /* GraphQL */ `
-  subscription OnCreateClub($filter: ModelSubscriptionClubFilterInput) {
-    onCreateClub(filter: $filter) {
-      id
-      name
-      description
-      thumbnail
-      events {
-        nextToken
-        startedAt
-      }
-      organizer {
-        nextToken
-        startedAt
-      }
-      type
-      managerID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onUpdateClub = /* GraphQL */ `
-  subscription OnUpdateClub($filter: ModelSubscriptionClubFilterInput) {
-    onUpdateClub(filter: $filter) {
-      id
-      name
-      description
-      thumbnail
-      events {
-        nextToken
-        startedAt
-      }
-      organizer {
-        nextToken
-        startedAt
-      }
-      type
-      managerID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onDeleteClub = /* GraphQL */ `
-  subscription OnDeleteClub($filter: ModelSubscriptionClubFilterInput) {
-    onDeleteClub(filter: $filter) {
-      id
-      name
-      description
-      thumbnail
-      events {
-        nextToken
-        startedAt
-      }
-      organizer {
-        nextToken
-        startedAt
-      }
-      type
-      managerID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
 export const onCreateEvent = /* GraphQL */ `
   subscription OnCreateEvent($filter: ModelSubscriptionEventFilterInput) {
     onCreateEvent(filter: $filter) {
       id
       name
+      startDate
+      endDate
+      place
       description
+      banner
       thumbnail
-      startAt
-      endAt
-      hosts {
-        nextToken
-        startedAt
-      }
-      belongTo {
-        nextToken
-        startedAt
-      }
-      users {
-        nextToken
-        startedAt
-      }
+      status
+      participants
+      ownerClub
       createdAt
       updatedAt
       _version
@@ -110,22 +28,15 @@ export const onUpdateEvent = /* GraphQL */ `
     onUpdateEvent(filter: $filter) {
       id
       name
+      startDate
+      endDate
+      place
       description
+      banner
       thumbnail
-      startAt
-      endAt
-      hosts {
-        nextToken
-        startedAt
-      }
-      belongTo {
-        nextToken
-        startedAt
-      }
-      users {
-        nextToken
-        startedAt
-      }
+      status
+      participants
+      ownerClub
       createdAt
       updatedAt
       _version
@@ -139,22 +50,138 @@ export const onDeleteEvent = /* GraphQL */ `
     onDeleteEvent(filter: $filter) {
       id
       name
+      startDate
+      endDate
+      place
       description
+      banner
       thumbnail
-      startAt
-      endAt
-      hosts {
+      status
+      participants
+      ownerClub
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onCreateAdmin = /* GraphQL */ `
+  subscription OnCreateAdmin($filter: ModelSubscriptionAdminFilterInput) {
+    onCreateAdmin(filter: $filter) {
+      id
+      name
+      thumbnal
+      testingClubs
+      pendingEvents
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdateAdmin = /* GraphQL */ `
+  subscription OnUpdateAdmin($filter: ModelSubscriptionAdminFilterInput) {
+    onUpdateAdmin(filter: $filter) {
+      id
+      name
+      thumbnal
+      testingClubs
+      pendingEvents
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeleteAdmin = /* GraphQL */ `
+  subscription OnDeleteAdmin($filter: ModelSubscriptionAdminFilterInput) {
+    onDeleteAdmin(filter: $filter) {
+      id
+      name
+      thumbnal
+      testingClubs
+      pendingEvents
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onCreateClub = /* GraphQL */ `
+  subscription OnCreateClub($filter: ModelSubscriptionClubFilterInput) {
+    onCreateClub(filter: $filter) {
+      id
+      name
+      introdution
+      type
+      members {
         nextToken
         startedAt
       }
-      belongTo {
+      events {
         nextToken
         startedAt
       }
-      users {
+      thumbnail
+      email
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdateClub = /* GraphQL */ `
+  subscription OnUpdateClub($filter: ModelSubscriptionClubFilterInput) {
+    onUpdateClub(filter: $filter) {
+      id
+      name
+      introdution
+      type
+      members {
         nextToken
         startedAt
       }
+      events {
+        nextToken
+        startedAt
+      }
+      thumbnail
+      email
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeleteClub = /* GraphQL */ `
+  subscription OnDeleteClub($filter: ModelSubscriptionClubFilterInput) {
+    onDeleteClub(filter: $filter) {
+      id
+      name
+      introdution
+      type
+      members {
+        nextToken
+        startedAt
+      }
+      events {
+        nextToken
+        startedAt
+      }
+      thumbnail
+      email
       createdAt
       updatedAt
       _version
@@ -167,19 +194,16 @@ export const onCreateUser = /* GraphQL */ `
   subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
     onCreateUser(filter: $filter) {
       id
-      email
-      password
-      avatar
+      name
+      thumbnail
       clubs {
         nextToken
         startedAt
       }
-      eventID
-      events {
+      joinedEvents {
         nextToken
         startedAt
       }
-      role
       createdAt
       updatedAt
       _version
@@ -192,19 +216,16 @@ export const onUpdateUser = /* GraphQL */ `
   subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
     onUpdateUser(filter: $filter) {
       id
-      email
-      password
-      avatar
+      name
+      thumbnail
       clubs {
         nextToken
         startedAt
       }
-      eventID
-      events {
+      joinedEvents {
         nextToken
         startedAt
       }
-      role
       createdAt
       updatedAt
       _version
@@ -217,144 +238,15 @@ export const onDeleteUser = /* GraphQL */ `
   subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
     onDeleteUser(filter: $filter) {
       id
-      email
-      password
-      avatar
+      name
+      thumbnail
       clubs {
         nextToken
         startedAt
       }
-      eventID
-      events {
+      joinedEvents {
         nextToken
         startedAt
-      }
-      role
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onCreateEventClub = /* GraphQL */ `
-  subscription OnCreateEventClub(
-    $filter: ModelSubscriptionEventClubFilterInput
-  ) {
-    onCreateEventClub(filter: $filter) {
-      id
-      clubId
-      eventId
-      club {
-        id
-        name
-        description
-        thumbnail
-        type
-        managerID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      event {
-        id
-        name
-        description
-        thumbnail
-        startAt
-        endAt
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onUpdateEventClub = /* GraphQL */ `
-  subscription OnUpdateEventClub(
-    $filter: ModelSubscriptionEventClubFilterInput
-  ) {
-    onUpdateEventClub(filter: $filter) {
-      id
-      clubId
-      eventId
-      club {
-        id
-        name
-        description
-        thumbnail
-        type
-        managerID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      event {
-        id
-        name
-        description
-        thumbnail
-        startAt
-        endAt
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onDeleteEventClub = /* GraphQL */ `
-  subscription OnDeleteEventClub(
-    $filter: ModelSubscriptionEventClubFilterInput
-  ) {
-    onDeleteEventClub(filter: $filter) {
-      id
-      clubId
-      eventId
-      club {
-        id
-        name
-        description
-        thumbnail
-        type
-        managerID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      event {
-        id
-        name
-        description
-        thumbnail
-        startAt
-        endAt
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       createdAt
       updatedAt
@@ -373,10 +265,10 @@ export const onCreateClubUser = /* GraphQL */ `
       club {
         id
         name
-        description
-        thumbnail
+        introdution
         type
-        managerID
+        thumbnail
+        email
         createdAt
         updatedAt
         _version
@@ -385,11 +277,8 @@ export const onCreateClubUser = /* GraphQL */ `
       }
       user {
         id
-        email
-        password
-        avatar
-        eventID
-        role
+        name
+        thumbnail
         createdAt
         updatedAt
         _version
@@ -413,10 +302,10 @@ export const onUpdateClubUser = /* GraphQL */ `
       club {
         id
         name
-        description
-        thumbnail
+        introdution
         type
-        managerID
+        thumbnail
+        email
         createdAt
         updatedAt
         _version
@@ -425,11 +314,8 @@ export const onUpdateClubUser = /* GraphQL */ `
       }
       user {
         id
-        email
-        password
-        avatar
-        eventID
-        role
+        name
+        thumbnail
         createdAt
         updatedAt
         _version
@@ -453,10 +339,10 @@ export const onDeleteClubUser = /* GraphQL */ `
       club {
         id
         name
-        description
-        thumbnail
+        introdution
         type
-        managerID
+        thumbnail
+        email
         createdAt
         updatedAt
         _version
@@ -464,138 +350,9 @@ export const onDeleteClubUser = /* GraphQL */ `
         _lastChangedAt
       }
       user {
-        id
-        email
-        password
-        avatar
-        eventID
-        role
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onCreateUserEvent = /* GraphQL */ `
-  subscription OnCreateUserEvent(
-    $filter: ModelSubscriptionUserEventFilterInput
-  ) {
-    onCreateUserEvent(filter: $filter) {
-      id
-      eventId
-      userId
-      event {
         id
         name
-        description
         thumbnail
-        startAt
-        endAt
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      user {
-        id
-        email
-        password
-        avatar
-        eventID
-        role
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onUpdateUserEvent = /* GraphQL */ `
-  subscription OnUpdateUserEvent(
-    $filter: ModelSubscriptionUserEventFilterInput
-  ) {
-    onUpdateUserEvent(filter: $filter) {
-      id
-      eventId
-      userId
-      event {
-        id
-        name
-        description
-        thumbnail
-        startAt
-        endAt
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      user {
-        id
-        email
-        password
-        avatar
-        eventID
-        role
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onDeleteUserEvent = /* GraphQL */ `
-  subscription OnDeleteUserEvent(
-    $filter: ModelSubscriptionUserEventFilterInput
-  ) {
-    onDeleteUserEvent(filter: $filter) {
-      id
-      eventId
-      userId
-      event {
-        id
-        name
-        description
-        thumbnail
-        startAt
-        endAt
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      user {
-        id
-        email
-        password
-        avatar
-        eventID
-        role
         createdAt
         updatedAt
         _version

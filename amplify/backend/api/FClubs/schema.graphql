@@ -1,33 +1,40 @@
-type Club @model @auth(rules: [{allow: private}]) {
+type Event @model @auth(rules: [{allow: public}]) {
   id: ID!
-  name: String!
-  description: String!
-  thumbnail: String!
-  events: [Event] @manyToMany(relationName: "EventClub")
-  organizer: [User] @manyToMany(relationName: "ClubUser")
-  type: String!
-  managerID: ID! @index(name: "byManager")
+  name: String
+  startDate: AWSDateTime
+  endDate: AWSDateTime
+  place: String
+  description: String
+  banner: String
+  thumbnail: String
+  status: String
+  participants: ID! @index(name: "byUser")
+  ownerClub: ID! @index(name: "byClub")
 }
 
-type Event @model @auth(rules: [{allow: private}]) {
+type Admin @model @auth(rules: [{allow: public}]) {
   id: ID!
-  name: String!
-  description: String!
-  thumbnail: String!
-  startAt: AWSDateTime!
-  endAt: AWSDateTime
-  hosts: [User] @hasMany(indexName: "byEvent", fields: ["id"])
-  belongTo: [Club] @manyToMany(relationName: "EventClub")
-  users: [User] @manyToMany(relationName: "UserEvent")
+  name: String
+  thumbnal: String
+  testingClubs: [String]
+  pendingEvents: [String]
 }
 
-type User @model @auth(rules: [{allow: groups, groups: ["Manager"], operations: [read, create, update, delete]}, {allow: groups, groups: ["User"], operations: [read, create, update, delete]}]) {
+type Club @model @auth(rules: [{allow: public}]) {
   id: ID!
-  email: String!
-  password: String!
-  avatar: String
+  name: String
+  introdution: String
+  type: String
+  members: [User] @manyToMany(relationName: "ClubUser")
+  events: [Event] @hasMany(indexName: "byClub", fields: ["id"])
+  thumbnail: String
+  email: String
+}
+
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  thumbnail: String
   clubs: [Club] @manyToMany(relationName: "ClubUser")
-  eventID: ID @index(name: "byEvent")
-  events: [Event] @manyToMany(relationName: "UserEvent")
-  role: String!
-}
+  joinedEvents: [Event] @hasMany(indexName: "byUser", fields: ["id"])
+} 

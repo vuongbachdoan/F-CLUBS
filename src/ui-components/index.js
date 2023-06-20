@@ -5,9 +5,9 @@
  **************************************************************************/
 
 export { default as studioTheme } from "./studioTheme";
+export { default as AdminCreateForm } from "./AdminCreateForm";
+export { default as AdminUpdateForm } from "./AdminUpdateForm";
 export { default as ClubCreateForm } from "./ClubCreateForm";
 export { default as ClubUpdateForm } from "./ClubUpdateForm";
-export { default as EventCreateForm } from "./EventCreateForm";
-export { default as EventUpdateForm } from "./EventUpdateForm";
 export { default as UserCreateForm } from "./UserCreateForm";
 export { default as UserUpdateForm } from "./UserUpdateForm";

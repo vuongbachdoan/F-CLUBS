@@ -1,141 +1,20 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getClub = /* GraphQL */ `
-  query GetClub($id: ID!) {
-    getClub(id: $id) {
-      id
-      name
-      description
-      thumbnail
-      events {
-        nextToken
-        startedAt
-      }
-      organizer {
-        nextToken
-        startedAt
-      }
-      type
-      managerID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const listClubs = /* GraphQL */ `
-  query ListClubs(
-    $filter: ModelClubFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listClubs(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        description
-        thumbnail
-        type
-        managerID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncClubs = /* GraphQL */ `
-  query SyncClubs(
-    $filter: ModelClubFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncClubs(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        name
-        description
-        thumbnail
-        type
-        managerID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const clubsByManagerID = /* GraphQL */ `
-  query ClubsByManagerID(
-    $managerID: ID!
-    $sortDirection: ModelSortDirection
-    $filter: ModelClubFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    clubsByManagerID(
-      managerID: $managerID
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        name
-        description
-        thumbnail
-        type
-        managerID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
 export const getEvent = /* GraphQL */ `
   query GetEvent($id: ID!) {
     getEvent(id: $id) {
       id
       name
+      startDate
+      endDate
+      place
       description
+      banner
       thumbnail
-      startAt
-      endAt
-      hosts {
-        nextToken
-        startedAt
-      }
-      belongTo {
-        nextToken
-        startedAt
-      }
-      users {
-        nextToken
-        startedAt
-      }
+      status
+      participants
+      ownerClub
       createdAt
       updatedAt
       _version
@@ -154,10 +33,15 @@ export const listEvents = /* GraphQL */ `
       items {
         id
         name
+        startDate
+        endDate
+        place
         description
+        banner
         thumbnail
-        startAt
-        endAt
+        status
+        participants
+        ownerClub
         createdAt
         updatedAt
         _version
@@ -185,10 +69,242 @@ export const syncEvents = /* GraphQL */ `
       items {
         id
         name
+        startDate
+        endDate
+        place
         description
+        banner
         thumbnail
-        startAt
-        endAt
+        status
+        participants
+        ownerClub
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const eventsByParticipants = /* GraphQL */ `
+  query EventsByParticipants(
+    $participants: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelEventFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    eventsByParticipants(
+      participants: $participants
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        name
+        startDate
+        endDate
+        place
+        description
+        banner
+        thumbnail
+        status
+        participants
+        ownerClub
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const eventsByOwnerClub = /* GraphQL */ `
+  query EventsByOwnerClub(
+    $ownerClub: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelEventFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    eventsByOwnerClub(
+      ownerClub: $ownerClub
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        name
+        startDate
+        endDate
+        place
+        description
+        banner
+        thumbnail
+        status
+        participants
+        ownerClub
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getAdmin = /* GraphQL */ `
+  query GetAdmin($id: ID!) {
+    getAdmin(id: $id) {
+      id
+      name
+      thumbnal
+      testingClubs
+      pendingEvents
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listAdmins = /* GraphQL */ `
+  query ListAdmins(
+    $filter: ModelAdminFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAdmins(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        thumbnal
+        testingClubs
+        pendingEvents
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncAdmins = /* GraphQL */ `
+  query SyncAdmins(
+    $filter: ModelAdminFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncAdmins(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        name
+        thumbnal
+        testingClubs
+        pendingEvents
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getClub = /* GraphQL */ `
+  query GetClub($id: ID!) {
+    getClub(id: $id) {
+      id
+      name
+      introdution
+      type
+      members {
+        nextToken
+        startedAt
+      }
+      events {
+        nextToken
+        startedAt
+      }
+      thumbnail
+      email
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listClubs = /* GraphQL */ `
+  query ListClubs(
+    $filter: ModelClubFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listClubs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        introdution
+        type
+        thumbnail
+        email
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncClubs = /* GraphQL */ `
+  query SyncClubs(
+    $filter: ModelClubFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncClubs(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        name
+        introdution
+        type
+        thumbnail
+        email
         createdAt
         updatedAt
         _version
@@ -204,19 +320,16 @@ export const getUser = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {
       id
-      email
-      password
-      avatar
+      name
+      thumbnail
       clubs {
         nextToken
         startedAt
       }
-      eventID
-      events {
+      joinedEvents {
         nextToken
         startedAt
       }
-      role
       createdAt
       updatedAt
       _version
@@ -234,11 +347,8 @@ export const listUsers = /* GraphQL */ `
     listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        email
-        password
-        avatar
-        eventID
-        role
+        name
+        thumbnail
         createdAt
         updatedAt
         _version
@@ -265,194 +375,8 @@ export const syncUsers = /* GraphQL */ `
     ) {
       items {
         id
-        email
-        password
-        avatar
-        eventID
-        role
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const usersByEventID = /* GraphQL */ `
-  query UsersByEventID(
-    $eventID: ID!
-    $sortDirection: ModelSortDirection
-    $filter: ModelUserFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    usersByEventID(
-      eventID: $eventID
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        email
-        password
-        avatar
-        eventID
-        role
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const getEventClub = /* GraphQL */ `
-  query GetEventClub($id: ID!) {
-    getEventClub(id: $id) {
-      id
-      clubId
-      eventId
-      club {
-        id
         name
-        description
         thumbnail
-        type
-        managerID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      event {
-        id
-        name
-        description
-        thumbnail
-        startAt
-        endAt
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const listEventClubs = /* GraphQL */ `
-  query ListEventClubs(
-    $filter: ModelEventClubFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listEventClubs(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        clubId
-        eventId
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncEventClubs = /* GraphQL */ `
-  query SyncEventClubs(
-    $filter: ModelEventClubFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncEventClubs(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        clubId
-        eventId
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const eventClubsByClubId = /* GraphQL */ `
-  query EventClubsByClubId(
-    $clubId: ID!
-    $sortDirection: ModelSortDirection
-    $filter: ModelEventClubFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    eventClubsByClubId(
-      clubId: $clubId
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        clubId
-        eventId
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const eventClubsByEventId = /* GraphQL */ `
-  query EventClubsByEventId(
-    $eventId: ID!
-    $sortDirection: ModelSortDirection
-    $filter: ModelEventClubFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    eventClubsByEventId(
-      eventId: $eventId
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        clubId
-        eventId
         createdAt
         updatedAt
         _version
@@ -473,10 +397,10 @@ export const getClubUser = /* GraphQL */ `
       club {
         id
         name
-        description
-        thumbnail
+        introdution
         type
-        managerID
+        thumbnail
+        email
         createdAt
         updatedAt
         _version
@@ -485,11 +409,8 @@ export const getClubUser = /* GraphQL */ `
       }
       user {
         id
-        email
-        password
-        avatar
-        eventID
-        role
+        name
+        thumbnail
         createdAt
         updatedAt
         _version
@@ -602,156 +523,6 @@ export const clubUsersByUserId = /* GraphQL */ `
       items {
         id
         clubId
-        userId
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const getUserEvent = /* GraphQL */ `
-  query GetUserEvent($id: ID!) {
-    getUserEvent(id: $id) {
-      id
-      eventId
-      userId
-      event {
-        id
-        name
-        description
-        thumbnail
-        startAt
-        endAt
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      user {
-        id
-        email
-        password
-        avatar
-        eventID
-        role
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const listUserEvents = /* GraphQL */ `
-  query ListUserEvents(
-    $filter: ModelUserEventFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listUserEvents(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        eventId
-        userId
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncUserEvents = /* GraphQL */ `
-  query SyncUserEvents(
-    $filter: ModelUserEventFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncUserEvents(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        eventId
-        userId
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const userEventsByEventId = /* GraphQL */ `
-  query UserEventsByEventId(
-    $eventId: ID!
-    $sortDirection: ModelSortDirection
-    $filter: ModelUserEventFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    userEventsByEventId(
-      eventId: $eventId
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        eventId
-        userId
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const userEventsByUserId = /* GraphQL */ `
-  query UserEventsByUserId(
-    $userId: ID!
-    $sortDirection: ModelSortDirection
-    $filter: ModelUserEventFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    userEventsByUserId(
-      userId: $userId
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        eventId
         userId
         createdAt
         updatedAt

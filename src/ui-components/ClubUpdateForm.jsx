@@ -25,28 +25,28 @@ export default function ClubUpdateForm(props) {
   } = props;
   const initialValues = {
     name: "",
-    description: "",
-    thumbnail: "",
+    introdution: "",
     type: "",
-    managerID: "",
+    thumbnail: "",
+    email: "",
   };
   const [name, setName] = React.useState(initialValues.name);
-  const [description, setDescription] = React.useState(
-    initialValues.description
+  const [introdution, setIntrodution] = React.useState(
+    initialValues.introdution
   );
-  const [thumbnail, setThumbnail] = React.useState(initialValues.thumbnail);
   const [type, setType] = React.useState(initialValues.type);
-  const [managerID, setManagerID] = React.useState(initialValues.managerID);
+  const [thumbnail, setThumbnail] = React.useState(initialValues.thumbnail);
+  const [email, setEmail] = React.useState(initialValues.email);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = clubRecord
       ? { ...initialValues, ...clubRecord }
       : initialValues;
     setName(cleanValues.name);
-    setDescription(cleanValues.description);
-    setThumbnail(cleanValues.thumbnail);
+    setIntrodution(cleanValues.introdution);
     setType(cleanValues.type);
-    setManagerID(cleanValues.managerID);
+    setThumbnail(cleanValues.thumbnail);
+    setEmail(cleanValues.email);
     setErrors({});
   };
   const [clubRecord, setClubRecord] = React.useState(clubModelProp);
@@ -61,11 +61,11 @@ export default function ClubUpdateForm(props) {
   }, [idProp, clubModelProp]);
   React.useEffect(resetStateValues, [clubRecord]);
   const validations = {
-    name: [{ type: "Required" }],
-    description: [{ type: "Required" }],
-    thumbnail: [{ type: "Required" }],
-    type: [{ type: "Required" }],
-    managerID: [{ type: "Required" }],
+    name: [],
+    introdution: [],
+    type: [],
+    thumbnail: [],
+    email: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -94,10 +94,10 @@ export default function ClubUpdateForm(props) {
         event.preventDefault();
         let modelFields = {
           name,
-          description,
-          thumbnail,
+          introdution,
           type,
-          managerID,
+          thumbnail,
+          email,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -146,7 +146,7 @@ export default function ClubUpdateForm(props) {
     >
       <TextField
         label="Name"
-        isRequired={true}
+        isRequired={false}
         isReadOnly={false}
         value={name}
         onChange={(e) => {
@@ -154,10 +154,10 @@ export default function ClubUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               name: value,
-              description,
-              thumbnail,
+              introdution,
               type,
-              managerID,
+              thumbnail,
+              email,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -173,64 +173,36 @@ export default function ClubUpdateForm(props) {
         {...getOverrideProps(overrides, "name")}
       ></TextField>
       <TextField
-        label="Description"
-        isRequired={true}
+        label="Introdution"
+        isRequired={false}
         isReadOnly={false}
-        value={description}
+        value={introdution}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
               name,
-              description: value,
+              introdution: value,
+              type,
               thumbnail,
-              type,
-              managerID,
+              email,
             };
             const result = onChange(modelFields);
-            value = result?.description ?? value;
+            value = result?.introdution ?? value;
           }
-          if (errors.description?.hasError) {
-            runValidationTasks("description", value);
+          if (errors.introdution?.hasError) {
+            runValidationTasks("introdution", value);
           }
-          setDescription(value);
+          setIntrodution(value);
         }}
-        onBlur={() => runValidationTasks("description", description)}
-        errorMessage={errors.description?.errorMessage}
-        hasError={errors.description?.hasError}
-        {...getOverrideProps(overrides, "description")}
-      ></TextField>
-      <TextField
-        label="Thumbnail"
-        isRequired={true}
-        isReadOnly={false}
-        value={thumbnail}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              name,
-              description,
-              thumbnail: value,
-              type,
-              managerID,
-            };
-            const result = onChange(modelFields);
-            value = result?.thumbnail ?? value;
-          }
-          if (errors.thumbnail?.hasError) {
-            runValidationTasks("thumbnail", value);
-          }
-          setThumbnail(value);
-        }}
-        onBlur={() => runValidationTasks("thumbnail", thumbnail)}
-        errorMessage={errors.thumbnail?.errorMessage}
-        hasError={errors.thumbnail?.hasError}
-        {...getOverrideProps(overrides, "thumbnail")}
+        onBlur={() => runValidationTasks("introdution", introdution)}
+        errorMessage={errors.introdution?.errorMessage}
+        hasError={errors.introdution?.hasError}
+        {...getOverrideProps(overrides, "introdution")}
       ></TextField>
       <TextField
         label="Type"
-        isRequired={true}
+        isRequired={false}
         isReadOnly={false}
         value={type}
         onChange={(e) => {
@@ -238,10 +210,10 @@ export default function ClubUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               name,
-              description,
-              thumbnail,
+              introdution,
               type: value,
-              managerID,
+              thumbnail,
+              email,
             };
             const result = onChange(modelFields);
             value = result?.type ?? value;
@@ -257,32 +229,60 @@ export default function ClubUpdateForm(props) {
         {...getOverrideProps(overrides, "type")}
       ></TextField>
       <TextField
-        label="Manager id"
-        isRequired={true}
+        label="Thumbnail"
+        isRequired={false}
         isReadOnly={false}
-        value={managerID}
+        value={thumbnail}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
               name,
-              description,
-              thumbnail,
+              introdution,
               type,
-              managerID: value,
+              thumbnail: value,
+              email,
             };
             const result = onChange(modelFields);
-            value = result?.managerID ?? value;
+            value = result?.thumbnail ?? value;
           }
-          if (errors.managerID?.hasError) {
-            runValidationTasks("managerID", value);
+          if (errors.thumbnail?.hasError) {
+            runValidationTasks("thumbnail", value);
           }
-          setManagerID(value);
+          setThumbnail(value);
         }}
-        onBlur={() => runValidationTasks("managerID", managerID)}
-        errorMessage={errors.managerID?.errorMessage}
-        hasError={errors.managerID?.hasError}
-        {...getOverrideProps(overrides, "managerID")}
+        onBlur={() => runValidationTasks("thumbnail", thumbnail)}
+        errorMessage={errors.thumbnail?.errorMessage}
+        hasError={errors.thumbnail?.hasError}
+        {...getOverrideProps(overrides, "thumbnail")}
+      ></TextField>
+      <TextField
+        label="Email"
+        isRequired={false}
+        isReadOnly={false}
+        value={email}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              introdution,
+              type,
+              thumbnail,
+              email: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.email ?? value;
+          }
+          if (errors.email?.hasError) {
+            runValidationTasks("email", value);
+          }
+          setEmail(value);
+        }}
+        onBlur={() => runValidationTasks("email", email)}
+        errorMessage={errors.email?.errorMessage}
+        hasError={errors.email?.hasError}
+        {...getOverrideProps(overrides, "email")}
       ></TextField>
       <Flex
         justifyContent="space-between"

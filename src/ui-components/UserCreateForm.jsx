@@ -23,28 +23,20 @@ export default function UserCreateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    email: "",
-    password: "",
-    avatar: "",
-    role: "",
+    name: "",
+    thumbnail: "",
   };
-  const [email, setEmail] = React.useState(initialValues.email);
-  const [password, setPassword] = React.useState(initialValues.password);
-  const [avatar, setAvatar] = React.useState(initialValues.avatar);
-  const [role, setRole] = React.useState(initialValues.role);
+  const [name, setName] = React.useState(initialValues.name);
+  const [thumbnail, setThumbnail] = React.useState(initialValues.thumbnail);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    setEmail(initialValues.email);
-    setPassword(initialValues.password);
-    setAvatar(initialValues.avatar);
-    setRole(initialValues.role);
+    setName(initialValues.name);
+    setThumbnail(initialValues.thumbnail);
     setErrors({});
   };
   const validations = {
-    email: [{ type: "Required" }],
-    password: [{ type: "Required" }],
-    avatar: [],
-    role: [{ type: "Required" }],
+    name: [],
+    thumbnail: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -72,10 +64,8 @@ export default function UserCreateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          email,
-          password,
-          avatar,
-          role,
+          name,
+          thumbnail,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -122,112 +112,54 @@ export default function UserCreateForm(props) {
       {...rest}
     >
       <TextField
-        label="Email"
-        isRequired={true}
-        isReadOnly={false}
-        value={email}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              email: value,
-              password,
-              avatar,
-              role,
-            };
-            const result = onChange(modelFields);
-            value = result?.email ?? value;
-          }
-          if (errors.email?.hasError) {
-            runValidationTasks("email", value);
-          }
-          setEmail(value);
-        }}
-        onBlur={() => runValidationTasks("email", email)}
-        errorMessage={errors.email?.errorMessage}
-        hasError={errors.email?.hasError}
-        {...getOverrideProps(overrides, "email")}
-      ></TextField>
-      <TextField
-        label="Password"
-        isRequired={true}
-        isReadOnly={false}
-        value={password}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              email,
-              password: value,
-              avatar,
-              role,
-            };
-            const result = onChange(modelFields);
-            value = result?.password ?? value;
-          }
-          if (errors.password?.hasError) {
-            runValidationTasks("password", value);
-          }
-          setPassword(value);
-        }}
-        onBlur={() => runValidationTasks("password", password)}
-        errorMessage={errors.password?.errorMessage}
-        hasError={errors.password?.hasError}
-        {...getOverrideProps(overrides, "password")}
-      ></TextField>
-      <TextField
-        label="Avatar"
+        label="Name"
         isRequired={false}
         isReadOnly={false}
-        value={avatar}
+        value={name}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              email,
-              password,
-              avatar: value,
-              role,
+              name: value,
+              thumbnail,
             };
             const result = onChange(modelFields);
-            value = result?.avatar ?? value;
+            value = result?.name ?? value;
           }
-          if (errors.avatar?.hasError) {
-            runValidationTasks("avatar", value);
+          if (errors.name?.hasError) {
+            runValidationTasks("name", value);
           }
-          setAvatar(value);
+          setName(value);
         }}
-        onBlur={() => runValidationTasks("avatar", avatar)}
-        errorMessage={errors.avatar?.errorMessage}
-        hasError={errors.avatar?.hasError}
-        {...getOverrideProps(overrides, "avatar")}
+        onBlur={() => runValidationTasks("name", name)}
+        errorMessage={errors.name?.errorMessage}
+        hasError={errors.name?.hasError}
+        {...getOverrideProps(overrides, "name")}
       ></TextField>
       <TextField
-        label="Role"
-        isRequired={true}
+        label="Thumbnail"
+        isRequired={false}
         isReadOnly={false}
-        value={role}
+        value={thumbnail}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              email,
-              password,
-              avatar,
-              role: value,
+              name,
+              thumbnail: value,
             };
             const result = onChange(modelFields);
-            value = result?.role ?? value;
+            value = result?.thumbnail ?? value;
           }
-          if (errors.role?.hasError) {
-            runValidationTasks("role", value);
+          if (errors.thumbnail?.hasError) {
+            runValidationTasks("thumbnail", value);
           }
-          setRole(value);
+          setThumbnail(value);
         }}
-        onBlur={() => runValidationTasks("role", role)}
-        errorMessage={errors.role?.errorMessage}
-        hasError={errors.role?.hasError}
-        {...getOverrideProps(overrides, "role")}
+        onBlur={() => runValidationTasks("thumbnail", thumbnail)}
+        errorMessage={errors.thumbnail?.errorMessage}
+        hasError={errors.thumbnail?.hasError}
+        {...getOverrideProps(overrides, "thumbnail")}
       ></TextField>
       <Flex
         justifyContent="space-between"

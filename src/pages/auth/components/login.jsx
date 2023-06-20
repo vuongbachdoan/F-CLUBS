@@ -14,12 +14,15 @@ export const Login = () => {
         setIsLogin(true)
         login(email, password)
             .then((res) => {
-                Promise.all([
-                    localStorage.setItem("user", JSON.stringify(res.user)),
-                    navigate("/app/manager/home", {
-                        replace: true
-                    }),
-                ])
+                console.log(res)
+                if (res.attributes) {
+                    Promise.all([
+                        localStorage.setItem("user", JSON.stringify(res.attributes)),
+                        navigate("/app/manager/home", {
+                            replace: true
+                        }),
+                    ])
+                }
             }).catch(() => {
                 setIsLogin(false);
             })

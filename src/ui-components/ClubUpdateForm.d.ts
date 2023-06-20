@@ -15,26 +15,26 @@ export declare type ValidationResponse = {
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type ClubUpdateFormInputValues = {
     name?: string;
-    description?: string;
-    thumbnail?: string;
+    introdution?: string;
     type?: string;
-    managerID?: string;
+    thumbnail?: string;
+    email?: string;
 };
 export declare type ClubUpdateFormValidationValues = {
     name?: ValidationFunction<string>;
-    description?: ValidationFunction<string>;
-    thumbnail?: ValidationFunction<string>;
+    introdution?: ValidationFunction<string>;
     type?: ValidationFunction<string>;
-    managerID?: ValidationFunction<string>;
+    thumbnail?: ValidationFunction<string>;
+    email?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type ClubUpdateFormOverridesProps = {
     ClubUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
     name?: PrimitiveOverrideProps<TextFieldProps>;
-    description?: PrimitiveOverrideProps<TextFieldProps>;
-    thumbnail?: PrimitiveOverrideProps<TextFieldProps>;
+    introdution?: PrimitiveOverrideProps<TextFieldProps>;
     type?: PrimitiveOverrideProps<TextFieldProps>;
-    managerID?: PrimitiveOverrideProps<TextFieldProps>;
+    thumbnail?: PrimitiveOverrideProps<TextFieldProps>;
+    email?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type ClubUpdateFormProps = React.PropsWithChildren<{
     overrides?: ClubUpdateFormOverridesProps | undefined | null;
